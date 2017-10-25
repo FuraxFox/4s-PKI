@@ -45,6 +45,7 @@
 
 
 #define LABEL_BTN_CREATE             ("Initialize PKI")
+#define LABEL_BTN_CREATE_RE          ("Re-initialize PKI")
 #define LABEL_BTN_LOCK               ("Lock")
 #define LABEL_BTN_UNLOCK             ("Unlock")
 #define LABEL_BTN_EXPORT_FIRST       ("Export first share")

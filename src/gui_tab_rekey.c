@@ -1,5 +1,3 @@
-// This is an open source non-commercial project. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 /**
  *
  * \file gui_tab_rekey.c
@@ -123,7 +121,7 @@ static void onExportShareClicked( uiButton * s, void * data )
             s4c->nb_share_exported+1, filename 
         );
     } else {
-        uiMsgBoxPrintf( s4w->mainwin, "Export succedeed", "%uth Shamir share saved to '%s'", s4c->nb_share_exported, filename);
+        uiMsgBoxPrintf( s4w->mainwin, "Export succedeed", "%uth Shamir share saved to '%s'", (s4c->nb_share_exported)+1, filename);
         s4c->nb_share_exported++;
         
         int pct = INTPCT(s4c->nb_share, s4c->nb_share_exported); 

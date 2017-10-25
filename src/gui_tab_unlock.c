@@ -241,8 +241,8 @@ static void on_lock_clicked( uiButton * s, void * data )
 	if( NULL != s4w->on_pki_locked ) {
 		s4w->on_pki_locked(s4w);
 	}
-
-	uiControlDisable( uiControl( CURRENT_TAB.btn_unlock ) );
+	uiControlEnable(  uiControl( CURRENT_TAB.btn_sel_pki_dir ) );
+	uiControlEnable(  uiControl( CURRENT_TAB.btn_unlock ) );
 	uiControlDisable( uiControl( CURRENT_TAB.btn_lock ) );
 
 }//eo on_lock_clicked
@@ -290,9 +290,10 @@ static void on_unlock_clicked( uiButton * s, void * data )
 
 
     update_shared_loaded_indicator( s4w );
-
+	
+	uiControlDisable( uiControl( CURRENT_TAB.btn_sel_pki_dir ) );
     uiControlDisable( uiControl( CURRENT_TAB.btn_unlock ) );
-	uiControlEnable( uiControl( CURRENT_TAB.btn_lock ) );
+	uiControlEnable(  uiControl( CURRENT_TAB.btn_lock ) );
     	
 }//eo on_unlock_clicked
 
@@ -325,6 +326,7 @@ static void on_pki_sel_dir_clicked( uiButton * s, void * data )
 		if( NULL!=s4w->tab_pki_operations.on_pki_loaded ) {
 			s4w->tab_pki_operations.on_pki_loaded(s4w);
 		}
+    	uiControlEnable( uiControl( CURRENT_TAB.btn_unlock ) );
     }
     uiFreeText(dirname);
 

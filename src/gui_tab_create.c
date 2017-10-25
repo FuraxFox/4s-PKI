@@ -252,6 +252,7 @@ static void onCreateClicked( uiButton * s, void * data )
         uiErrorBoxPrintf(s4w->mainwin, "Secret splitting failed","Unable to perform Shamir secret splitting");
         return;        
     }    
+    uiButtonSetText( CURRENT_TAB.btn_run, LABEL_BTN_CREATE_RE);    
 
 }//eo onRunClicked
 
@@ -284,7 +285,7 @@ static void onExportShareClicked( uiButton * s, void * data )
             s4c->nb_share_exported+1, filename 
         );
     } else {
-        uiMsgBoxPrintf( s4w->mainwin, "Export succedeed", "%uth Shamir share saved to '%s'", s4c->nb_share_exported, filename);
+        uiMsgBoxPrintf( s4w->mainwin, "Export succedeed", "%uth Shamir share saved to '%s'", (s4c->nb_share_exported)+1, filename);
         s4c->nb_share_exported++;
         
         int pct = INTPCT(s4c->nb_share, s4c->nb_share_exported); 

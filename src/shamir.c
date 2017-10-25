@@ -1,5 +1,3 @@
-// This is an open source non-commercial project. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 /**
  *
  * \file shamic.c
@@ -305,7 +303,7 @@ int do_shamir_recovery( const int nb_participants, const s_share_t* shares, uint
 
 	// hex decode the pass phrase	
 	mpz_get_str( hex_val, 36, reconstructed); // TODO check we do not overflow hex_val
-	DDEBUG_PRN("hex val: %s", hex_val);*
+	DDEBUG_PRN("hex val: %s", hex_val);
 	ssize_t dec_res = hex_decode( result, max_result, hex_val );
 	if( dec_res < 0 ) {
 		warn("Failed to hex decode the Shamir recovered value");
