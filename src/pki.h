@@ -66,14 +66,14 @@ struct SS4EventHandlers;
 ssize_t gen_pass(char *out, const size_t max_size);
 
 /**
- * \brief Init the PKI
+ * \brief Initialize the PKI
  *
  * Create initial PKI files and directory and generate Self signed CA and the CRL associated
  *
  * \param directory     root directory for the PKI
  * \param subject       subject for the root certificate encoded "openssl style" /Field1=val1/Field2=val2/Field3=val3
  * \param password      password for the root private key
- * \param nb_share     number of shared secrets
+ * \param nb_share      number of shared secrets
  * \param quorum        quorum required to unlock the root private key
  * \param evt_handlers  structure of application events (progress, errors) handlers
  *
