@@ -8,8 +8,9 @@
 #include "utils.h"
 
 
-void testHighLevelAPI()
+void OpenSSLCrypto_CACreation_Basic_Test( void )
 {
+	//TODO use test framework tools
     const char * subjects[] = { 
 		"/C=FR/O=Goupilland/CN=RootCA" , 
 		"/DC=net/DC=goupilland/DC=ca", 
@@ -55,7 +56,10 @@ void testHighLevelAPI()
 
 }//eo testHighLevelAPI
 
-
+void OpenSSLCrypto_CACreation_Basic_Test( void )
+{
+	//TODO
+}
 
 int main (int argc, char** argv) 
 {
@@ -74,12 +78,12 @@ int main (int argc, char** argv)
    }
  
    /* add the tests to the suite */ 
-   if (NULL == CU_add_test(pSuite, "Basic Test for Shamir Secret Sharing (3 among 4)", ShamirShare_Basic_Test)) {
+   if (NULL == CU_add_test(pSuite, "Creating a few self signed CA", OpenSSLCrypto_CACreation_Basic_Test)) {
       CU_cleanup_registry();
       return CU_get_error();
    }
  
-   if (NULL == CU_add_test(pSuite, "Test multiple iterations for Shamir secret Sharing (3 among 5)", ShamirShare_Many3Among5_Test)) {
+   if (NULL == CU_add_test(pSuite, "Test self signed CA creation with invalid subjects", OpenSSLCrypto_CACreation_Basic_Test)) {
       CU_cleanup_registry();
       return CU_get_error();
    }

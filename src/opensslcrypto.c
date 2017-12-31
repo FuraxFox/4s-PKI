@@ -8,6 +8,8 @@
  *
  */
 
+//TODO: integrate error management functions from utils.h
+
 #include "opensslcrypto.h"
 
 
