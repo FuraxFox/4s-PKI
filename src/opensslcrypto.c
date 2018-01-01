@@ -402,13 +402,6 @@ static void _clearSubject( struct SCertSubject* subj )
     memset( subj, 0, sizeof(struct SCertSubject) );
 }//eo _clearSubject
 
-static void _printSubject( FILE* fh, const struct SCertSubject* subj ) 
-{
-	fprintf( fh, "Subject: %p\n", subj );
-    for( unsigned i=0; i < subj->nb_parts; i++ ) {
-        fprintf( fh, "\t- var[%s] = val[%s]\n", subj->names[i], subj->vals[i] );
-    }
-}//eo _printSubject
 
 
 int create_self_signed_ca( 
