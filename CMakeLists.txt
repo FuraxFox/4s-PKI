@@ -31,9 +31,11 @@ endif ()
 # Flags for GCC or CLang
 if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_C_FLAGS_DEBUG
-        "${CMAKE_C_FLAGS_DEBUG} -Wno-unused-parameter -Wall -pedantic -Wextra -ggdb -lm")
+        "${CMAKE_C_FLAGS_DEBUG}   -D_DEFAULT_SOURCE -std=c11 -Wno-unused-parameter -Wall -Wextra -pedantic  -ggdb  ")
     set(CMAKE_C_FLAGS_RELEASE
-        "${CMAKE_C_FLAGS_RELEASE} -Wno-unused-parameter -Wall -std=gnu99 -lm")
+        "${CMAKE_C_FLAGS_RELEASE} -D_DEFAULT_SOURCE -std=c11 -Wno-unused-parameter -Wall -Wextra")
+#	set(CMAKE_EXE_LINKER_FLAGS
+#		"${CMAKE_EXE_LINKER_FLAGS} -t  ") 
 endif()
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
@@ -42,8 +44,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(CMAKE_C_FLAGS_RELEASE
         "${CMAKE_C_FLAGS_RELEASE} -Wno-unused-parameter -std=gnu99")
 endif()
-
-
 
 # Finding LibUI library
 set(LIBUI_DIR "/opt/devel")
@@ -66,6 +66,10 @@ set(LIBS ${LIBS} ${GMP_LIBRARIES})
 find_package(OPENSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIR})
 set(LIBS ${LIBS} ${OPENSSL_LIBRARIES})
+
+# Adding libm for rint() 
+set(LIBS ${LIBS} -lm )
+
 
 # Adding source directory
 add_subdirectory(src)
