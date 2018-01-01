@@ -336,7 +336,7 @@ int load_shamir_secret( const char* filename, s_share_t* share )
 	secure_memzero( share->prime, max_str_sze );
 
 	FILE *fp = fopen(filename,"r");
-	if( fp == NULL){
+	if( NULL == fp ){
 		warn("Failed to open file '%s' for Shamir secret reading", filename);
 		return -1;
 	}
@@ -355,16 +355,29 @@ int load_shamir_secret( const char* filename, s_share_t* share )
 	}
 	if( !in_share ) {
 		warn("Failed to find Shamir secret header in '%s'", filename );
+		fclose(fp);
 		return -1;
 	}
 
-	fgets( share->X, max_str_sze, fp);
+	if( fgets( share->X, max_str_sze, fp) == NULL ) {
+		warn("Failed while reading data from %s for Shamir secret", filename);
+		fclose(fp);
+		return -1;
+	}
 	strtok( share->X, "\n");
 
-	fgets( share->Y, max_str_sze, fp);
+	if( fgets( share->Y, max_str_sze, fp) == NULL) {
+		warn("Failed while reading data from %s for Shamir secret", filename);
+		fclose(fp);
+		return -1;
+	}
 	strtok( share->Y, "\n");
 
-	fgets( share->prime, max_str_sze, fp);
+	if( fgets( share->prime, max_str_sze, fp) == NULL) {
+		warn("Failed while reading data from %s for Shamir secret", filename);
+		fclose(fp);
+		return -1;
+	}
 
 	fclose(fp);
 
